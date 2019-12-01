@@ -25,4 +25,4 @@ FruitPainter : this class is responsible to paint the fruit onto the RenderWindo
 GameOverPainter : this class is responsible to paint the game over text onto the RenderWindow. <br/>
 
 Below is the overview of the class diagram (please not that relationship between classes are not marked completely)
-![classDiagramOverview.png](classDiagramOverview.png)
+![classDiagramOverview.PNG](classDiagramOverview.PNG)
