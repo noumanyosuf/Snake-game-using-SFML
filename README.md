@@ -24,5 +24,5 @@ SnakePainter : this class is responsible to paint the snake onto the RenderWindo
 FruitPainter : this class is responsible to paint the fruit onto the RenderWindow.<br/>
 GameOverPainter : this class is responsible to paint the game over text onto the RenderWindow. <br/>
 
-Below is the overview of the class diagram (please not that relationship between classes are not marked completely)
+Below is the overview of the class diagram (please note that relationship between classes are not defined completely in the below diagram)
 ![classDiagramOverview.PNG](classDiagramOverview.PNG)
