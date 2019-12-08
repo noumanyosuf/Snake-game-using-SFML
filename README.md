@@ -12,17 +12,20 @@ To read more about SFML use https://www.sfml-dev.org/ url.<br/>
 # About classes
 Responsiblity of each class is very distinctly define to avoid any coupling.
 Below are the description of the class in the project:<br/>
-Cordinate class : holds the X and Y (unsgined) cordinate value. <br/>
+Cordinate class : holds the X and Y cordinate value. <br/>
 Board class : holds the attributes of a board. (and do not paint anything on itself by itself)<br/>
 Snake class : hold the length and color of the snake. (also do not paint anything on itself by itself)<br/>
 Fruit class : As name suggests it hold the attribute of a fruit ie color in this context.(type of fruit do not matter)<br/>
-MoveManager : This is static class, responsible of the movement of the different entities on the board,here snake and fruit. Also this class is only responsible for calculating the new cordniate of snake and fruit (if its is eaten).<br/>
-MoveValidator : a interface<br/>
-GameOverValiadator : a concrete class of MoveValidator. and only validate if passed cordinate forms a cycle (condition to stop game).<br/>
-Painter : a interface<br/>
-SnakePainter : this class is responsible to paint the snake onto the RenderWindow.<br/>
-FruitPainter : this class is responsible to paint the fruit onto the RenderWindow.<br/>
-GameOverPainter : this class is responsible to paint the game over text onto the RenderWindow. <br/>
+IMoveGenerator : This is a inteface. This class genrates new/next moves for diffrent entities on the board, in our case snake and fruit.<br/>
+SnakeMoveGenerator : This is concrete class of IMoveGenerator. it takes current cordinate and direction of snake to return its new/next cordinates.<br/>
+FruitMoveGenerator : This is concrete class of IMoveGenerator. it takes current cordinate of fruit to return its new/next cordinates.<br/>
+ICordinateValidator : This is a interface.<br/>
+SnakeCordinateValidator : its concrete class of ICordinateValidator, which check if given cordinate is valid or not to procced the game (checks if snakes has touch itself). <br/>
+IPainter : This is a inteface.<br/>
+SnakePainter : This is concrete class of IMoveGenerator. And this class is responsible to paint the snake onto the RenderWindow.<br/>
+FruitPainter : This is concrete class of IMoveGenerator. And this class is responsible to paint the fruit onto the RenderWindow.<br/>
+GameOverPainter : This is another concrete class of IMoveGenerator. And this class is responsible to paint the game over text onto the RenderWindow. <br/>
+GameManager : This class is moderator of the game and is responsible to start the game. This class is also responsible for validating if new move of the snake is valid to continoue the game or if next/new fruit needs to updated.<br/>
 
-Below is the overview of the class diagram (please note that relationship between classes are not defined completely in the below diagram)
+Below is the overview of the class diagram (please note that relationship between classes are not defined completely in the below diagram)<br/>
 ![classDiagramOverview.PNG](classDiagramOverview.PNG)
