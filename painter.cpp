@@ -1,15 +1,13 @@
 #include "painter.h"
-#include "board.h"
-#include "movemanager.h"
 
 void BoardPainter::paint()
 {
 	if (window)
 	{
-		Sprite sprite(mBoard->mCellColor);
-		for (int i = 0; i < ROWS; i++)
+		Sprite sprite(mtexture);
+		for (int i = 0; i < mWidth; i++)
 		{
-			for (int j = 0; j < COLUMBS; j++)
+			for (int j = 0; j < mHeight; j++)
 			{
 				sprite.setPosition(i * CELL_SIZE, j * CELL_SIZE);
 				window->draw(sprite);
@@ -22,10 +20,10 @@ void SnakePainter::paint()
 {
 	if (window)
 	{
-		Sprite sprite(mSnake->mColor);
-		for (int i = 0; i <= mSnake->mLength; i++)
+		Sprite sprite(mtexture);
+		for (int i = 0; i <mSize; i++)
 		{
-			sprite.setPosition(MoveManager::mSnakeCord[i].X * CELL_SIZE, MoveManager::mSnakeCord[i].Y * CELL_SIZE);
+			sprite.setPosition(mCord[i].X * CELL_SIZE,mCord[i].Y * CELL_SIZE);
 			window->draw(sprite);
 		}
 	}
@@ -35,8 +33,8 @@ void FruitPainter::paint()
 {
 	if (window)
 	{
-		Sprite sprite(mFruit->mColor);
-		sprite.setPosition(MoveManager::mFruitCord.X * CELL_SIZE, MoveManager::mFruitCord.Y * CELL_SIZE);
+		Sprite sprite(mtexture);
+		sprite.setPosition(mCord.X * CELL_SIZE, mCord.Y * CELL_SIZE);
 		window->draw(sprite);
 	}
 }

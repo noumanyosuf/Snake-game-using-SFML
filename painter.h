@@ -1,51 +1,61 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-using namespace sf;
+#include "board.h"
 
-class Snake;
-class Fruit;
-class Board;
-
-class Painter
+class IPainter
 {
 public:
 	virtual void paint() = 0;
 };
 
-class BoardPainter : public Painter
+class BoardPainter : public IPainter
 {
-	Board* mBoard;
 	RenderWindow* window;
+	Texture mtexture;
+	int mWidth;
+	int mHeight;
 public:
-	BoardPainter(RenderWindow* win, Board* board) { window = win; mBoard = board; }
+	BoardPainter(RenderWindow* win,int width,int height,Texture texture) 
+	{
+		window = win; mtexture = texture; mWidth = width; mHeight = height;
+	}
 	void paint();
 };
 
-
-class SnakePainter : public Painter
+class SnakePainter : public IPainter
 {
-	Snake* mSnake;
 	RenderWindow* window;
+	Texture mtexture;
 public:
-	SnakePainter(RenderWindow* win, Snake* snake) { window = win; mSnake = snake; }
+	ARRAY<Cordinate> mCord;
+	int mSize;
+	SnakePainter(RenderWindow* win, Texture texture)
+	{
+		window = win;  mtexture = texture; mSize = 0;
+	}
 	void paint();
 };
 
-
-class FruitPainter : public Painter
+class FruitPainter : public IPainter
 {
-	Fruit* mFruit;
 	RenderWindow* window;
+	Texture mtexture;
 public:
-	FruitPainter(RenderWindow* win, Fruit* fruit) { window = win; mFruit = fruit; }
+	Cordinate mCord;
+	FruitPainter(RenderWindow* win, Texture texture)
+	{
+		window = win; mtexture = texture;
+	}
 	void paint();
 };
 
-class GameOverPainter : public Painter
+class GameOverPainter : public IPainter
 {
 	RenderWindow* window;
 public:
-	GameOverPainter(RenderWindow* win){ window = win; }
+	GameOverPainter(RenderWindow* win)
+	{
+		window = win;
+	}
 	void paint();
 };
-

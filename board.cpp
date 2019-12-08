@@ -16,8 +16,8 @@ Board::Board()
 {
 	mWidth = CELL_SIZE * ROWS;
 	mHeight = CELL_SIZE * COLUMBS;
-
 	mCellColor.loadFromFile("images/white.png");
+	mSnakeMoveDir = enRight;
 }
 
 
